@@ -10,7 +10,7 @@ const props = defineProps<{
 	<div class="card">
 		<div class="card__thumbnail">
 			<img
-				src="https://raw.githubusercontent.com/ConsultaRemedios/frontend-challenge/master/assets/mortal-kombat-xl.png"
+				:src="`/img/${props.game.image}`"
 				alt=""
 				class="card__thumbnail-image"
 			/>
