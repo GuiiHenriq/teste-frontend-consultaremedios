@@ -17,7 +17,7 @@ const props = defineProps<{
 		</div>
 
 		<h2 class="card__name">{{ props.game.name }}</h2>
-		<span class="card__price">R$ {{ props.game.price }}</span>
+		<span class="card__price">{{ props.game.price.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) }}</span>
 
 		<button class="card__button">adicionar ao carrinho</button>
 	</div>
@@ -29,6 +29,7 @@ const props = defineProps<{
 
 	&__thumbnail {
 		background: $background;
+    border-radius: 3px;
 		display: flex;
 		align-items: center;
 		justify-content: center;

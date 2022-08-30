@@ -4,7 +4,29 @@ import FilterGames from '~/components/atoms/FilterGames.vue';
 import axios from 'axios';
 import { ref, onMounted } from 'vue';
 
-const games = ref(null);
+interface Games {
+	id: number
+	name: string
+	price: number
+	score: number
+	image: string
+}
+
+const games = ref<Games[]>([]);
+const filterGames = ref<Games[]>([]);
+
+
+function filterOrder(property: string) {
+	filterGames.value = games.value.sort((a: any, b: any) => {
+		if (a[property] < b[property]) return -1;
+		if (a[property] > b[property]) return 1;
+		return 0;
+	});
+}
+
+function getEventFilter(value: string) {
+	filterOrder(value);
+}
 
 function getGames() {
 	axios
@@ -13,7 +35,7 @@ function getGames() {
 		)
 		.then(function (res) {
 			games.value = res.data;
-			console.log(res.data);
+			filterOrder('name');
 		})
 		.catch(function (error) {
 			console.log(error);
@@ -30,7 +52,7 @@ onMounted(() => {
 		<header class="games__header">
 			<h1 class="games__title">Games</h1>
 
-			<FilterGames />
+			<FilterGames @change="getEventFilter" />
 		</header>
 
 		<main class="games__list">
@@ -44,7 +66,10 @@ onMounted(() => {
 <style lang="scss">
 .games {
 	&__header {
-		
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin: 42px 0;
 	}
 
 	&__title {
