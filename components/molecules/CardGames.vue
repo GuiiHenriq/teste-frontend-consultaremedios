@@ -1,5 +1,13 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineProps, defineEmits } from 'vue';
+
+const emit = defineEmits<{
+	(e: 'add', value: object): void
+}>();
+
+function addCart(event: any) {
+	emit('add', event);
+};
 
 const props = defineProps<{
 	game: object
@@ -7,11 +15,12 @@ const props = defineProps<{
 </script>
 
 <template>
-	<div class="card">
+	<div class="card" @click="addCart(game)">
 		<div class="card__thumbnail">
 			<img
 				:src="`/img/${props.game.image}`"
-				alt=""
+				:alt="`Capa do jogo: ${props.game.name}`"
+				:title="props.game.name"
 				class="card__thumbnail-image"
 			/>
 		</div>

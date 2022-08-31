@@ -1,27 +1,34 @@
+<script setup lang="ts">
+import { ref  } from 'vue';
+import ListGames from '~/components/organisms/ListGames.vue';
+import Cart from '~/components/organisms/CartGames.vue';
+
+interface Games {
+	id: number
+	name: string
+	price: number
+	score: number
+	image: string
+}
+
+const gamesCart = ref<Games[]>([]);
+
+function getGamesCart(value: any) {
+	gamesCart.value = value;
+}
+</script>
+
 <template>
-	<div>
-		<ListGames />
+	<div class="wrapper">
+		<ListGames @change="getGamesCart" />
+		<Cart :games="gamesCart" />
 	</div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
-import ListGames from '~/components/organisms/ListGames.vue';
-
-export default Vue.extend({
-	name: 'IndexPage',
-
-	components: {
-		ListGames,
-	},
-});
-</script>
-
 <style lang="scss">
-.container {
-	max-width: 70rem;
-	width: 100%;
-	margin: 0px auto;
-	padding: 0px 1rem;
+.wrapper {
+	margin: 42px 0;
+	display: flex;
+	justify-content: space-between;
 }
 </style>
