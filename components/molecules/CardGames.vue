@@ -51,7 +51,7 @@ const props = defineProps<{
 		justify-content: center;
 
 		&-image {
-			padding: 25px 41px;
+			padding: 15px 0;
 		}
 	}
 
@@ -97,6 +97,22 @@ const props = defineProps<{
 	&:hover > .card__button,
 	.card__button:hover {
 		opacity: 1;
+	}
+
+	@media screen and (min-width: 768px) {
+		&__thumbnail {
+			&-image {
+				padding: 12px 20px;
+			}
+		}
+	}
+
+	@media screen and (min-width: 1024px) {
+		&__thumbnail {
+			&-image {
+				padding: 25px 41px;
+			}
+		}
 	}
 }
 </style>

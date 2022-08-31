@@ -88,8 +88,7 @@ onMounted(() => {
 .games {
 	&__header {
 		display: flex;
-		justify-content: space-between;
-		align-items: center;
+		flex-direction: column;
 		margin-bottom: 42px;
 	}
 
@@ -101,6 +100,7 @@ onMounted(() => {
 		font-weight: 600;
 		font-size: 48px;
 		color: $darkgray;
+		margin-bottom: 15px;
 	}
 
 	&__loader {
@@ -113,10 +113,46 @@ onMounted(() => {
 
 	&__list {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		grid-template-rows: repeat(2, 1fr);
-		grid-column-gap: 31px;
-		grid-row-gap: 48px;
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr;
+	}
+
+	@media screen and (min-width: 768px) {
+		&__header {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 42px;
+		}
+
+		&__title {
+			margin-bottom: 0;
+		}
+
+		&__list {
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: repeat(2, 1fr);
+			grid-column-gap: 15px;
+			grid-row-gap: 24px
+		}
+	}
+
+	@media screen and (min-width: 1024px) {
+		&__header {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 42px;
+		}
+
+		&__list {
+			grid-template-columns: repeat(3, 1fr);
+			grid-template-rows: repeat(2, 1fr);
+			grid-column-gap: 31px;
+			grid-row-gap: 48px;
+		}
 	}
 }
 </style>

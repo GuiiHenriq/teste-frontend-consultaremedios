@@ -30,5 +30,13 @@ function getGamesCart(value: any) {
 	margin: 42px 0;
 	display: flex;
 	justify-content: space-between;
+	flex-direction: column;
+
+	@media screen and (min-width: 768px) {
+		flex-direction: row;
+	}
+
+	@media screen and (min-width: 1024px) {
+	}
 }
 </style>

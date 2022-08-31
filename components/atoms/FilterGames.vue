@@ -7,7 +7,7 @@ const emit = defineEmits<{
 
 function onChange(event: any) {
 	emit('change', event.target.value);
-};
+}
 </script>
 
 <template>
@@ -23,8 +23,16 @@ function onChange(event: any) {
 <style lang="scss">
 .select-wrapper {
 	position: relative;
-	width: 260px;
-	
+	width: 100%;
+
+	@media screen and (min-width: 768px) {
+		width: 260px;
+	}
+
+	@media screen and (min-width: 1024px) {
+		width: 260px;
+	}
+
 	&::after {
 		color: $black;
 		content: '▾';
@@ -42,12 +50,12 @@ function onChange(event: any) {
 	-webkit-appearance: none;
 	background: $white;
 	border: 1px solid $lightgray;
-  border-radius: 4px;
+	border-radius: 4px;
 	cursor: pointer;
 	padding: 10px 0 10px 18px;
 	width: 100%;
 	font-size: 14px;
-  color: $gray;
+	color: $gray;
 
 	&:focus {
 		color: $black;

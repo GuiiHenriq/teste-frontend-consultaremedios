@@ -14,9 +14,16 @@ export default Vue.extend({
 
 <style lang="scss">
 .container {
-	max-width: 75rem;
-	width: 100%;
 	margin: 0px auto;
 	padding: 0px 1rem;
+	width: auto;
+
+	@media screen and (min-width: 768px) {
+	}
+
+	@media screen and (min-width: 1024px) {
+		max-width: 75rem;
+		width: 100%;
+	}
 }
 </style>

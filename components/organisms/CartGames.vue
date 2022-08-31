@@ -56,7 +56,9 @@ function removeGame(index: number) {
 		<section v-if="!gamesLength" class="cart__empty">
 			<CartIcon class="cart__empty-icon" />
 
-			<p class="cart__empty-label">Até o momento,<br/>o seu carrinho está vazio</p>
+			<p class="cart__empty-label">
+				Até o momento,<br />o seu carrinho está vazio
+			</p>
 		</section>
 
 		<section v-else>
@@ -120,7 +122,7 @@ function removeGame(index: number) {
 	padding: 20px 25px;
 	border: 1px solid $lightgray;
 	border-radius: 3px;
-	width: 262px;
+	width: auto;
 	height: max-content;
 
 	&__header {
@@ -190,8 +192,6 @@ function removeGame(index: number) {
 
 		&-remove {
 			button {
-				opacity: 0;
-				transition: 0.5s;
 				border-radius: 50%;
 				background: $lightblue;
 				color: $white;
@@ -218,13 +218,6 @@ function removeGame(index: number) {
 			font-size: 14px;
 			color: $darknessgray;
 			font-weight: bold;
-		}
-
-		&:hover > .cart__game-description,
-		.cart__game-remove:hover {
-			button {
-				opacity: 1;
-			}
 		}
 	}
 
@@ -261,6 +254,33 @@ function removeGame(index: number) {
 		padding: 15px 0;
 		text-align: center;
 		cursor: pointer;
+	}
+
+	@media screen and (min-width: 768px) {
+		width: 262px;
+		margin-top: 4px;
+		margin-left: 20px;
+
+		&__game {
+			&-remove {
+				button {
+					opacity: 0;
+					transition: 0.5s;
+				}
+			}
+
+			&:hover > .cart__game-description,
+			.cart__game-remove:hover {
+				button {
+					opacity: 1;
+				}
+			}
+		}
+	}
+
+	@media screen and (min-width: 1024px) {
+		width: 262px;
+		margin-left: 0;
 	}
 }
 </style>
