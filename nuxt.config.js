@@ -36,6 +36,7 @@ export default {
 		'@nuxt/typescript-build',
 		'@nuxtjs/style-resources',
 		'@nuxtjs/svg',
+		'@nuxtjs/dotenv',
 	],
 
 	// Modules: https://go.nuxtjs.dev/config-modules
@@ -56,9 +57,5 @@ export default {
 
 	styleResources: {
 		scss: ['~assets/styles/*.scss'],
-	},
-
-	publicRuntimeConfig: {
-		apiUrl: process.env.API_URL,
 	},
 };

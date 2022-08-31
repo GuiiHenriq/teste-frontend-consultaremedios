@@ -43,9 +43,7 @@ loader.value = true;
 
 function getGames() {
 	axios
-		.get(
-			'https://raw.githubusercontent.com/ConsultaRemedios/frontend-challenge/master/products.json',
-		)
+		.get(`${process.env.NUXT_ENV_API_URL}/products.json`)
 		.then(function (res) {
 			games.value = res.data;
 			filterOrder('name');
@@ -71,7 +69,7 @@ onMounted(() => {
 			<FilterGames v-if="!loader" @change="getEventFilter" />
 		</header>
 
-		<main v-if="loader" class="games__loader" >
+		<main v-if="loader" class="games__loader">
 			<Loading />
 		</main>
 
