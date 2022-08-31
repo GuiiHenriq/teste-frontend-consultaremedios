@@ -7,7 +7,7 @@ const emit = defineEmits<{
 
 function addCart(event: any) {
 	emit('add', event);
-};
+}
 
 const props = defineProps<{
 	game: object
@@ -15,7 +15,7 @@ const props = defineProps<{
 </script>
 
 <template>
-	<div class="card" @click="addCart(game)">
+	<div class="card">
 		<div class="card__thumbnail">
 			<img
 				:src="`/img/${props.game.image}`"
@@ -25,20 +25,27 @@ const props = defineProps<{
 			/>
 		</div>
 
-		<h2 class="card__name">{{ props.game.name }}</h2>
-		<span class="card__price">{{ props.game.price.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) }}</span>
+		<div class="card__description">
+			<h2 class="card__name">{{ props.game.name }}</h2>
+			<span class="card__price">{{
+				props.game.price.toLocaleString('pt-br', {
+					style: 'currency',
+					currency: 'BRL',
+				})
+			}}</span>
+		</div>
 
-		<button class="card__button">adicionar ao carrinho</button>
+		<button class="card__button" @click="addCart(game)">
+			adicionar ao carrinho
+		</button>
 	</div>
 </template>
 
 <style lang="scss">
 .card {
-	transition: 0.5s;
-
 	&__thumbnail {
 		background: $background;
-    border-radius: 3px;
+		border-radius: 3px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -53,6 +60,7 @@ const props = defineProps<{
 		color: $gray;
 		margin: 10px 0;
 		text-align: center;
+		transition: 0.5s;
 	}
 
 	&__price {
@@ -62,15 +70,33 @@ const props = defineProps<{
 		text-align: center;
 		margin: 0 auto;
 		display: block;
+		transition: 0.5s;
+	}
+
+	&__description {
+		width: 100%;
 	}
 
 	&__button {
+		opacity: 0;
+		transition: 0.5s;
 		font-size: 16px;
 		font-weight: bold;
 		color: $darkblue;
 		cursor: pointer;
 		margin: 10px auto 0 auto;
+		display: block;
+		width: 100%;
+	}
+
+	&:hover > .card__description,
+	.card__description:hover {
 		display: none;
+	}
+
+	&:hover > .card__button,
+	.card__button:hover {
+		opacity: 1;
 	}
 }
 </style>

@@ -24,7 +24,7 @@ function onChange(event: any) {
 .select-wrapper {
 	position: relative;
 	width: 260px;
-	// Dropdown icon
+	
 	&::after {
 		color: $black;
 		content: '▾';
@@ -37,7 +37,6 @@ function onChange(event: any) {
 	}
 }
 
-// Default state
 .select {
 	-moz-appearance: none;
 	-webkit-appearance: none;
@@ -49,10 +48,11 @@ function onChange(event: any) {
 	width: 100%;
 	font-size: 14px;
   color: $gray;
+
 	&:focus {
 		color: $black;
 	}
-	// Hack for IE 11+
+
 	&::-ms-expand {
 		display: none;
 	}

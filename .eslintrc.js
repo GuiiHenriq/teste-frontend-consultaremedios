@@ -26,5 +26,6 @@ module.exports = {
 		semi: ['error', 'always'],
 		'vue/html-indent': ['error', 'tab'],
 		'vue/order-in-components': 'off',
+		'vue/multi-word-component-names': 'off', 
 	},
 };
