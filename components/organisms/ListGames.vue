@@ -73,7 +73,7 @@ onMounted(() => {
 			<Loading />
 		</main>
 
-		<main v-else class="games__list">
+		<main v-else class="games__list" data-cy="list-games">
 			<Card
 				v-for="game in games"
 				:key="game.id"

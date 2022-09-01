@@ -12,7 +12,7 @@ function onChange(event: { target: HTMLInputElement }) {
 
 <template>
 	<div class="select-wrapper">
-		<select id="games" name="games" class="select" @change="onChange($event)">
+		<select id="games" name="games" class="select" data-cy="order-games" @change="onChange($event)">
 			<option value="name" selected>Ordem Alfabética</option>
 			<option value="score">Popularidade</option>
 			<option value="price">Preço</option>

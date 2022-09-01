@@ -36,8 +36,8 @@ const props = defineProps<{
 
 		<div class="card__description">
 			<div class="card__description--infos">
-				<h2 class="card__name">{{ props.game.name }}</h2>
-				<span class="card__price">{{
+				<h2 class="card__name" data-cy="name-game-card">{{ props.game.name }}</h2>
+				<span class="card__price" data-cy="price-game-card">{{
 					props.game.price.toLocaleString('pt-br', {
 						style: 'currency',
 						currency: 'BRL',
@@ -52,7 +52,8 @@ const props = defineProps<{
 			</div>
 		</div>
 
-		<button class="card__button" @click="addCart(game)">
+		<button class="card__button" data-cy="btn-add-game" @click="addCart(game)"
+		>
 			adicionar ao carrinho
 		</button>
 	</div>

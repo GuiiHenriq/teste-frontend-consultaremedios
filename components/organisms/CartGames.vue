@@ -53,7 +53,7 @@ function removeGame(index: number) {
 			>
 		</div>
 
-		<section v-if="!gamesLength" class="cart__empty">
+		<section v-if="!gamesLength" class="cart__empty" data-cy="cart-empty">
 			<CartIcon class="cart__empty-icon" />
 
 			<p class="cart__empty-label">
@@ -63,7 +63,7 @@ function removeGame(index: number) {
 
 		<section v-else>
 			<div class="cart__list-game">
-				<div v-for="(game, index) in gamesData" :key="index" class="cart__game">
+				<div v-for="(game, index) in gamesData" :key="index" class="cart__game" data-cy="cart-game">
 					<div class="cart__game-thumbnail">
 						<img
 							:src="`/img/${game.image}`"
@@ -75,11 +75,11 @@ function removeGame(index: number) {
 
 					<div class="cart__game-description">
 						<div class="cart__game-infos">
-							<h2 class="cart__game-name">{{ game.name }}</h2>
-							<span class="cart__game-price">{{ convertBRL(game.price) }}</span>
+							<h2 class="cart__game-name" data-cy="name-game-cart">{{ game.name }}</h2>
+							<span class="cart__game-price" data-cy="price-game-cart">{{ convertBRL(game.price) }}</span>
 						</div>
 
-						<div class="cart__game-remove">
+						<div class="cart__game-remove" data-cy="btn-remove-game">
 							<button @click="removeGame(index)">X</button>
 						</div>
 					</div>
@@ -90,13 +90,13 @@ function removeGame(index: number) {
 				<div>
 					<p class="cart__infos-label">subtotal</p>
 
-					<span class="cart__infos-price">{{ convertBRL(gamesSubtotal) }}</span>
+					<span class="cart__infos-price" data-cy="subtotal-cart">{{ convertBRL(gamesSubtotal) }}</span>
 				</div>
 
 				<div>
 					<p class="cart__infos-label">frete</p>
 
-					<span class="cart__infos-price">{{
+					<span class="cart__infos-price" data-cy="frete-cart">{{
 						gamesSubtotal <= priceLimit ? convertBRL(gamesFrete) : convertBRL(0)
 					}}</span>
 				</div>
@@ -104,7 +104,7 @@ function removeGame(index: number) {
 				<div>
 					<p class="cart__infos-label">total</p>
 
-					<span class="cart__infos-price large">{{
+					<span class="cart__infos-price large" data-cy="price-cart">{{
 						gamesSubtotal <= priceLimit
 							? convertBRL(gamesTotalPrice)
 							: convertBRL(gamesSubtotal)
