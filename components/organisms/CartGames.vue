@@ -281,7 +281,6 @@ function removeGame(index: number) {
 	}
 
 	@media screen and (min-width: 1024px) {
-		width: 262px;
 		margin: 4px 0 0 0;
 	}
 }

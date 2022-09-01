@@ -18,9 +18,6 @@ export default Vue.extend({
 	padding: 0px 1rem;
 	width: auto;
 
-	@media screen and (min-width: 768px) {
-	}
-
 	@media screen and (min-width: 1024px) {
 		max-width: 75rem;
 		width: 100%;

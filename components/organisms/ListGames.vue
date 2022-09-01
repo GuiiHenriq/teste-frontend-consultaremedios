@@ -139,14 +139,6 @@ onMounted(() => {
 	}
 
 	@media screen and (min-width: 1024px) {
-		&__header {
-			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
-			align-items: center;
-			margin-bottom: 42px;
-		}
-
 		&__list {
 			grid-template-columns: repeat(3, 1fr);
 			grid-template-rows: repeat(2, 1fr);

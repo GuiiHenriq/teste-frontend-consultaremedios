@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref  } from 'vue';
 import ListGames from '~/components/organisms/ListGames.vue';
-import Cart from '~/components/organisms/CartGames.vue';
+import CartGames from '~/components/organisms/CartGames.vue';
 
 interface Games {
 	id: number
@@ -13,7 +13,7 @@ interface Games {
 
 const gamesCart = ref<Games[]>([]);
 
-function getGamesCart(value: any) {
+function getGamesCart(value: Array<Games>) {
 	gamesCart.value = value;
 }
 </script>
@@ -21,7 +21,7 @@ function getGamesCart(value: any) {
 <template>
 	<div class="wrapper">
 		<ListGames @change="getGamesCart" />
-		<Cart :games="gamesCart" />
+		<CartGames :games="gamesCart" />
 	</div>
 </template>
 
@@ -34,9 +34,6 @@ function getGamesCart(value: any) {
 
 	@media screen and (min-width: 768px) {
 		flex-direction: row;
-	}
-
-	@media screen and (min-width: 1024px) {
 	}
 }
 </style>

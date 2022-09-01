@@ -5,7 +5,7 @@ const emit = defineEmits<{
 	(e: 'change', value: string): void
 }>();
 
-function onChange(event: any) {
+function onChange(event: { target: HTMLInputElement }) {
 	emit('change', event.target.value);
 }
 </script>
@@ -28,21 +28,6 @@ function onChange(event: any) {
 	@media screen and (min-width: 768px) {
 		width: 260px;
 	}
-
-	@media screen and (min-width: 1024px) {
-		width: 260px;
-	}
-
-	&::after {
-		color: $black;
-		content: '▾';
-		margin-right: 10px;
-		pointer-events: none;
-		position: absolute;
-		right: 10px;
-		top: 7px;
-		font-size: 20px;
-	}
 }
 
 .select {
@@ -55,10 +40,12 @@ function onChange(event: any) {
 	padding: 10px 0 10px 18px;
 	width: 100%;
 	font-size: 14px;
-	color: $gray;
+	color: $darknessgray;
+	background: url("~assets/img/arrow-down-icon.svg") no-repeat;
+	background-position: right 15px top 50%;
 
 	&:focus {
-		color: $black;
+		color: $darknessgray;
 	}
 
 	&::-ms-expand {

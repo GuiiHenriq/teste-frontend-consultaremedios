@@ -2,11 +2,19 @@
 import { defineProps, defineEmits } from 'vue';
 import ShoppingIcon from '~/assets/img/shopping-cart.svg?inline';
 
+interface Games {
+	id: number
+	name: string
+	price: number
+	score: number
+	image: string
+}
+
 const emit = defineEmits<{
 	(e: 'add', value: object): void
 }>();
 
-function addCart(event: any) {
+function addCart(event: Games) {
 	emit('add', event);
 }
 
