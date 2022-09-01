@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { defineProps, defineEmits } from 'vue';
+import ShoppingIcon from '~/assets/img/shopping-cart.svg?inline';
 
 const emit = defineEmits<{
 	(e: 'add', value: object): void
@@ -26,13 +27,21 @@ const props = defineProps<{
 		</div>
 
 		<div class="card__description">
-			<h2 class="card__name">{{ props.game.name }}</h2>
-			<span class="card__price">{{
-				props.game.price.toLocaleString('pt-br', {
-					style: 'currency',
-					currency: 'BRL',
-				})
-			}}</span>
+			<div class="card__description--infos">
+				<h2 class="card__name">{{ props.game.name }}</h2>
+				<span class="card__price">{{
+					props.game.price.toLocaleString('pt-br', {
+						style: 'currency',
+						currency: 'BRL',
+					})
+				}}</span>
+			</div>
+
+			<div class="card__description--cta">
+				<button class="card__button-icon" @click="addCart(game)">
+					<ShoppingIcon />
+				</button>
+			</div>
 		</div>
 
 		<button class="card__button" @click="addCart(game)">
@@ -41,8 +50,10 @@ const props = defineProps<{
 	</div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .card {
+	margin-bottom: 20px;
+
 	&__thumbnail {
 		background: $background;
 		border-radius: 3px;
@@ -59,7 +70,6 @@ const props = defineProps<{
 		font-size: 16px;
 		color: $gray;
 		margin: 10px 0;
-		text-align: center;
 		transition: 0.5s;
 	}
 
@@ -68,42 +78,78 @@ const props = defineProps<{
 		font-weight: bold;
 		color: $darkblue;
 		text-align: center;
-		margin: 0 auto;
-		display: block;
 		transition: 0.5s;
 	}
 
 	&__description {
 		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
 	}
 
 	&__button {
-		opacity: 0;
-		transition: 0.5s;
 		font-size: 16px;
 		font-weight: bold;
 		color: $darkblue;
 		cursor: pointer;
 		margin: 10px auto 0 auto;
-		display: block;
-		width: 100%;
-	}
-
-	&:hover > .card__description,
-	.card__description:hover {
 		display: none;
-	}
+		width: 100%;
 
-	&:hover > .card__button,
-	.card__button:hover {
-		opacity: 1;
+		&-icon {
+			background: $lightblue;
+			padding: 7px;
+			width: 45px;
+			height: 45px;
+			border-radius: 3px;
+			margin-top: 10px;
+
+			svg {
+				width: auto;
+				height: auto;
+				stroke: $white;
+			}
+		}
 	}
 
 	@media screen and (min-width: 768px) {
+		margin-bottom: 0;
+
 		&__thumbnail {
 			&-image {
 				padding: 12px 20px;
 			}
+		}
+
+		&__button {
+			transition: 0.5s;
+			display: none;
+
+			&-icon {
+				display: none;
+			}
+		}
+
+		&__description {
+			display: block;
+
+			&--infos {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+		}
+
+		&:hover > .card__description,
+		.card__description:hover {
+			display: none;
+		}
+
+		&:hover > .card__button,
+		.card__button:hover {
+			display: block;
 		}
 	}
 

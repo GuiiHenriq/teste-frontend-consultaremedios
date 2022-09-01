@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, defineProps } from 'vue';
-import CartIcon from '~/assets/cart-icon.svg?inline';
+import CartIcon from '~/assets/img/cart-icon.svg?inline';
 
 const priceLimit = ref<number>(250);
 
@@ -124,6 +124,8 @@ function removeGame(index: number) {
 	border-radius: 3px;
 	width: auto;
 	height: max-content;
+	order: -1;
+	margin: 0 0 30px 0;
 
 	&__header {
 		display: flex;
@@ -258,8 +260,8 @@ function removeGame(index: number) {
 
 	@media screen and (min-width: 768px) {
 		width: 262px;
-		margin-top: 4px;
-		margin-left: 20px;
+		margin: 4px 0 0 20px;
+		order: 1;
 
 		&__game {
 			&-remove {
@@ -280,7 +282,7 @@ function removeGame(index: number) {
 
 	@media screen and (min-width: 1024px) {
 		width: 262px;
-		margin-left: 0;
+		margin: 4px 0 0 0;
 	}
 }
 </style>

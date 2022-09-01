@@ -39,9 +39,9 @@ function getEventCart(value: Games) {
 	emit('change', cartGames.value);
 }
 
-loader.value = true;
-
 function getGames() {
+	loader.value = true;
+
 	axios
 		.get(`${process.env.NUXT_ENV_API_URL}/products.json`)
 		.then(function (res) {
