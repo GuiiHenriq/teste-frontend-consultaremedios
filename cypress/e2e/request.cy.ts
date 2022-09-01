@@ -6,7 +6,7 @@ it('Fluxo - Requisição', ()=>{
 		url: 'https://raw.githubusercontent.com/ConsultaRemedios/frontend-challenge/master/products.json',
 		failOnStatusCode: true,
 	}).as('response');
-	cy.get('@response').should((response)=>{
+	cy.get('@response').should((response: any)=>{
 		expect(response.status).to.equal(200);
 	});
 });
