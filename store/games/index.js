@@ -12,19 +12,19 @@ export const getters = {
 };
 
 export const mutations = {
-	addGame (state, payload) {
+	ADD_GAME (state, payload) {
 		state.gamesCart.push({ ...payload });
 	},
-	removeGame (state, payload) {
+	REMOVE_GAME (state, payload) {
 		state.gamesCart = state.gamesCart.filter(x => x.id !== payload);
 	},
 };
 
 export const actions = {
-	adicionarGame ({ commit }, payload) {
-		commit('addGame', payload);
+	addGame ({ commit }, payload) {
+		commit('ADD_GAME', payload);
 	},
-	deleteGame ({ commit }, payload) {
-		commit('removeGame', payload);
+	removeGame ({ commit }, payload) {
+		commit('REMOVE_GAME', payload);
 	},
 };
