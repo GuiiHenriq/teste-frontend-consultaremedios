@@ -18,6 +18,7 @@ const emit = defineEmits<{
 }>();
 
 const loader = ref<boolean>(false);
+const error = ref<boolean>(false);
 const games = ref<Games[]>([]);
 const filterGames = ref<Games[]>([]);
 const cartGames = ref<Games[]>([]);
@@ -48,8 +49,9 @@ function getGames() {
 			games.value = res.data;
 			filterOrder('name');
 		})
-		.catch(function (error) {
-			console.log(error);
+		.catch(function (erro) {
+			console.log(erro);
+			error.value = true;
 		})
 		.finally(function () {
 			loader.value = false;
@@ -66,14 +68,19 @@ onMounted(() => {
 		<header class="games__header">
 			<h1 class="games__title">Games</h1>
 
-			<FilterGames v-if="!loader" @change="getEventFilter" />
+			<FilterGames v-if="!loader && !error" @change="getEventFilter" />
 		</header>
 
 		<main v-if="loader" class="games__loader">
 			<Loading />
 		</main>
 
-		<main v-else class="games__list" data-cy="list-games">
+		<main v-if="error" class="games__error">
+			<h2 class="games__error-title">Não foi possível exibir a listagem dos Games.</h2>
+			<button class="games__error-button" @click.prevent="getGames">TENTE NOVAMENTE</button>
+		</main>
+
+		<main v-if="!loader && !error" class="games__list" data-cy="list-games">
 			<Card
 				v-for="game in games"
 				:key="game.id"
@@ -94,6 +101,26 @@ onMounted(() => {
 
 	&__loader-wrapper {
 		width: 100%;
+	}
+
+	&__error {
+		&-title {
+			font-weight: 600;
+			font-size: 32px;
+			color: $darkgray;
+			margin-bottom: 20px;
+		}
+
+		&-button {
+			border-radius: 3px;
+			background: $lightblue;
+			color: $white;
+			font-size: 14px;
+			font-weight: bold;
+			padding: 15px;
+			text-align: center;
+			cursor: pointer;
+		}
 	}
 
 	&__title {
