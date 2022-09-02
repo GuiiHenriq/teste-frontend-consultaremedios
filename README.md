@@ -20,11 +20,7 @@
 
 > ⭕ Versão do Node Recomendada: 16xx ⭕
 
-> Necessário inserir a URL da API no arquivo **.env**
-
-> No arquivo **.env.sample** tem um exemplo da variável utilizada.
-
-> https://raw.githubusercontent.com/ConsultaRemedios/frontend-challenge/master/products.json
+> Necessário variáveis de ambiente, use o arquivo **.env.sample** como **.env**
 
     git clone https://github.com/GuiiHenriq/teste-frontend-consultaremedios.git
 
